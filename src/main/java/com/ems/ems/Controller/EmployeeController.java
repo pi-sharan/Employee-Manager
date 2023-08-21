@@ -1,8 +1,27 @@
 package com.ems.ems.Controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.ems.ems.Service.EmployeeService;
 
 @Controller
 public class EmployeeController {
+    //This is controller layer, so we need to inject dependency of Service Layer
+    private EmployeeService employeeService;
+
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
+    //Handler method which returns model and view to list all students
+    //returns the view name as String
+
+    @GetMapping("/api/employees")
+    public String listEmployees(Model model) {
+        model.addAttribute("employeeList", employeeService.getAllEmployees());
+        return "employees";
+    }
     
 }
