@@ -3,6 +3,8 @@ package com.ems.ems.Controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.ems.ems.Entity.Employee;
 import com.ems.ems.Service.EmployeeService;
@@ -32,6 +34,12 @@ public class EmployeeController {
         Employee employee = new Employee();
         model.addAttribute("employee", employee);
         return "create_employee";
+    }
+
+    @PostMapping("/api/employees")
+    public String saveEmployee(@ModelAttribute("employee") Employee employee) {
+        employeeService.saveEmployee(employee);
+        return "redirect:/api/employees";
     }
     
 }

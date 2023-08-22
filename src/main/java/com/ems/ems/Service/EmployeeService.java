@@ -6,4 +6,6 @@ import com.ems.ems.Entity.Employee;
 
 public interface EmployeeService {
     List<Employee> getAllEmployees();
+    
+    Employee saveEmployee(Employee employee);
 }
