@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.ems.ems.Entity.Employee;
 import com.ems.ems.Service.EmployeeService;
 
 @Controller
@@ -22,6 +23,15 @@ public class EmployeeController {
     public String listEmployees(Model model) {
         model.addAttribute("employeeList", employeeService.getAllEmployees());
         return "employees";
+    }
+
+    @GetMapping("/api/employees/new")
+    public String addEmployeeForm(Model model) {
+
+        //Temp Employee object which will get data from the Form
+        Employee employee = new Employee();
+        model.addAttribute("employee", employee);
+        return "create_employee";
     }
     
 }
