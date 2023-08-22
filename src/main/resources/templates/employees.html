@@ -35,6 +35,13 @@
 					<td th:text = "${employee.firstName}"></td>
 					<td th:text = "${employee.lastName}"></td>
 					<td th:text = "${employee.email}"></td>
+                    <td>
+                        <a th:href = "@{/api/employees/edit/{id}(id=${employee.id})}"
+						 class = "btn btn-primary">Update</a>
+						
+						<a th:href = "@{/api/employees/{id}(id=${employee.id})}"
+						 class = "btn btn-danger">Delete</a>
+                    </td>
 				</tr>
 			</tbody>
 		
